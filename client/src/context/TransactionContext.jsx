@@ -43,18 +43,20 @@ if (ethereum == null) {
     `https://sepolia.infura.io/v3/${APIKEY}`
   );
 
-  // Or connect to the MetaMask EIP-1193 object. This is a standard
+  //Creating a signing account from a private key
+  signer = new ethers.Wallet(SIGNER_KEY, provider);
+
+  // Or connect to the MetaMask/wallet EIP-1193 object. This is a standard
   // protocol that allows Ethers access to make all read-only
   // requests through MetaMask.
 
-  // ///////provider = new ethers.providers.Web3Provider(ethereum);
+  // provider = new ethers.providers.Web3Provider(ethereum);
 
   // It also provides an opportunity to request access to write
   // operations, which will be performed by the private key
-  // that MetaMask manages for the user.
+  // that MetaMask/wallet manages for the user.
 
-  //Creating a signing account from a private key
-  signer = new ethers.Wallet(SIGNER_KEY, provider);
+  //signer = provider.getSigner()
 }
 
 export const TransactionsProvider = ({ children }) => {
